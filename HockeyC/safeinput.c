@@ -5,6 +5,18 @@
 #include <stdlib.h>
 #include "safeinput.h"
 
+#include "player.h"
+
+
+
+
+void Test2(char q, int a)
+{
+	PLAYER p;
+	p.salary = 123;
+	GetAdjustedSalaryForPlayer(p);
+}
+
 bool GetInputInt(char* prompt, int* value)
 {
 	char buff[255];

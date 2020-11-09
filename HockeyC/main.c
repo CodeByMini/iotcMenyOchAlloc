@@ -1,15 +1,14 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "safeinput.h"
 #include <stdbool.h>
+#include <time.h>
 
-typedef struct
-{
-	char name[50];
-	int jerseynumber;
-	long salary;
-} PLAYER;
+#include "player.h"
+
+
 
 
 typedef struct
@@ -17,7 +16,6 @@ typedef struct
 	PLAYER* allaSpelare;
 	int AntalSpelare;
 }SYSTEM_STATE;
-
 
 
 
@@ -124,22 +122,86 @@ void Huvudmeny(SYSTEM_STATE *state)
 
 }
 
-void Add(int x)
+
+void RunOneOfMats()
 {
-	x = x+ 1;
+	//Kanske slumpa ??
+	//if(----)
+	//	Blink("Hello")
+	//if(----)
+	//	Scroll("There")
 }
 
+void RunOneOfFoppas()
+{
+	
+}
+
+void RunOneOfJorgens()
+{
+	
+}
+
+void HandleWinning(PLAYER winning)
+{
+	if (!strcmp(winning.name, "Mats Sundin"))
+		RunOneOfMats();
+	if (!strcmp(winning.name, "Peter Forsberg"))
+		RunOneOfFoppas();
+	if (!strcmp(winning.name, "Jörgen Jönsson"))
+		RunOneOfJorgens();
+}
 
 int main()
 {
-	int x = 13;
-	Add(x);
-	printf("%d", x);
+	////Två funk med samma namn Julia
+	////typedef circulär...eller ännu bättre header only!  
+	//Test2('w', 12);
+	//SYSTEM_STATE state;
+	//state.allaSpelare = NULL;
+	//state.AntalSpelare = 0;
 
-	SYSTEM_STATE state;
-	state.allaSpelare = NULL;
-	state.AntalSpelare = 0;
-	Huvudmeny(&state);
+
+	PLAYER p;
+	p.jerseynumber = 13;
+	strcpy(p.name, "Mats Sundin");
+	p.salary = 123;
+	p.AntalLotter = 500; // 0- 500
+
+	PLAYER p2;
+	p2.jerseynumber = 21;
+	strcpy(p2.name, "Peter Forsberg");
+	p2.salary = 123;
+	p2.AntalLotter = 1000; // 501-1500
+
+
+	PLAYER p3;
+	p3.jerseynumber = 21;
+	strcpy(p3.name, "Jörgen Jönsson");
+	p3.salary = 2;
+	p3.AntalLotter = 100; //1501-1600
+
+	PLAYER	 customers[3];
+	customers[0] = p;
+	customers[1] = p2;
+	customers[2] = p3;
+	int summaAntalLotter = 0;
+
+	for (int i = 0; i < 3; i++)
+		summaAntalLotter += customers[i].AntalLotter;
+	
+	srand(time(NULL));
+	int r = rand() % summaAntalLotter;
+
+	//Loopa för att se vem som innehar den lotten
+
+	//När vi fått fram vem som har lotten
+	int i = 2; //Låt oss säga att det blev 2
+	PLAYER winning = customers[i];
+	HandleWinning(winning);
+	
+	
+	//Huvudmeny(&state);
 
 	return 0;
 }

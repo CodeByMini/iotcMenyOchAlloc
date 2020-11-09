@@ -127,6 +127,10 @@
     <ClCompile Include="safeinput.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="Header1.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="r.h" />
     <ClInclude Include="safeinput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
